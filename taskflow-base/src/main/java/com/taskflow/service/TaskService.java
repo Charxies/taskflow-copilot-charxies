@@ -133,4 +133,15 @@ public class TaskService {
                 .filter(t -> t.getPriority() == priority)
                 .toList();
     }
+
+    /**
+     * Devuelve las tareas sin responsable de TODOS los proyectos, ordenadas por dueDate asc (nulls al final).
+     * Usa el predicado nombrado del ReportService y el comparador POR_FECHA.
+     */
+    public List<Task> sinResponsable() {
+        return repository.findAll().stream()
+                .filter(ReportService.SIN_ASIGNAR)
+                .sorted(TaskOrders.POR_FECHA)
+                .toList();
+    }
 }
