@@ -208,3 +208,5 @@ y te manda a revisar si el demonio está encendido, que no era el problema.
 - **Sin frontend**: TaskFlow es una API. Si algún día se le sirve una UI estática desde
   `src/main/resources/static/`, hay que abrirla en `SecurityConfig` — con el `anyRequest()
   .authenticated()` actual, hasta el CSS responde `401`.
+
+Repositorio de práctica de la Semana 6.

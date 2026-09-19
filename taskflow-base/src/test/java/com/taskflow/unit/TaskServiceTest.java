@@ -17,6 +17,8 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.time.LocalDate;
+import java.util.List;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -154,6 +156,70 @@ class TaskServiceTest {
             assertThrows(TaskNotFoundException.class, () -> service.eliminar(999L));
             // never() + anyLong(): NO se borró nada. (Regla "todos matchers o ninguno": aquí anyLong()).
             verify(repository, never()).deleteById(anyLong());
+        }
+    }
+
+    @Nested
+    @DisplayName("vencidas")
+    class Vencidas {
+
+        @Test
+        void vencidas_devuelveSoloLasVencidasYOrdenadasPorFecha() {
+            try {
+                Task overdueOlder = new Task(1L, "Antigua vencida", "d", TaskStatus.IN_PROGRESS,
+                        Priority.MED, PROYECTO, 1L, LocalDate.now().minusDays(5));
+                Task overdueYounger = new Task(4L, "Reciente vencida", "d", TaskStatus.IN_PROGRESS,
+                        Priority.MED, PROYECTO, 1L, LocalDate.now().minusDays(1));
+                Task donePast = new Task(2L, "Hecha pasada", "d", TaskStatus.DONE,
+                        Priority.MED, PROYECTO, 1L, LocalDate.now().minusDays(3));
+                Task noDate = new Task(3L, "Sin fecha", "d", TaskStatus.TODO,
+                        Priority.MED, PROYECTO, 1L, null);
+
+                when(repository.findAll()).thenReturn(List.of(overdueYounger, noDate, overdueOlder, donePast));
+
+                List<Task> result = service.vencidas();
+
+                // Debe venir solo las dos vencidas y en orden por fecha asc (la más antigua primero)
+                assertEquals(2, result.size());
+                assertEquals(overdueOlder.getId(), result.get(0).getId());
+                assertEquals(overdueYounger.getId(), result.get(1).getId());
+            } catch (TaskValidationException e) {
+                throw new IllegalStateException("dato de prueba inválido", e);
+            }
+        }
+    }
+
+    @Nested
+    @DisplayName("SinResponsable")
+    class SinResponsable {
+
+        @Test
+        void sinResponsable_filtraYOrdenaPorFecha() {
+            try {
+                Task t10 = new Task(10L, "Con fecha 10", "d", TaskStatus.TODO, Priority.MED, PROYECTO, null, LocalDate.now().plusDays(10));
+                Task withAssignee = new Task(11L, "Con responsable", "d", TaskStatus.TODO, Priority.MED, PROYECTO, 5L, LocalDate.now().plusDays(5));
+                Task noDate = new Task(12L, "Sin fecha", "d", TaskStatus.TODO, Priority.MED, PROYECTO, null, null);
+                Task t2 = new Task(13L, "Con fecha 2", "d", TaskStatus.TODO, Priority.MED, PROYECTO, null, LocalDate.now().plusDays(2));
+
+                when(repository.findAll()).thenReturn(List.of(t10, withAssignee, noDate, t2));
+
+                List<Task> result = service.sinResponsable();
+
+                assertEquals(3, result.size());
+                assertEquals(List.of(t2.getId(), t10.getId(), noDate.getId()), result.stream().map(Task::getId).toList());
+            } catch (TaskValidationException e) {
+                throw new IllegalStateException("dato de prueba inválido", e);
+            }
+        }
+
+        @Test
+        void sinResponsable_noHayConAssignee_devuelveVacio() {
+            Task with1 = tarea(1L, "Tarea A", 1L);
+            Task with2 = tarea(2L, "Tarea B", 2L);
+            when(repository.findAll()).thenReturn(List.of(with1, with2));
+
+            List<Task> result = service.sinResponsable();
+            assertEquals(0, result.size());
         }
     }
 

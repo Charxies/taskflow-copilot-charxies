@@ -104,6 +104,17 @@ public class TaskService {
                 .toList();
     }
 
+    /**
+     * Devuelve las tareas vencidas de TODOS los proyectos, ordenadas por fecha ascendente.
+     * Usa la regla de vencimiento de la entidad (Task.estaVencida) y el comparador POR_FECHA.
+     */
+    public List<Task> vencidas() {
+        return repository.findAll().stream()
+                .filter(Task::estaVencida)
+                .sorted(TaskOrders.POR_FECHA)
+                .toList();
+    }
+
     /** Filtra las tareas por estado (?status=). '==' entre enums es seguro. */
     public List<Task> porEstado(TaskStatus status) {
         return repository.findAll().stream()
@@ -120,6 +131,17 @@ public class TaskService {
     public List<Task> porPrioridad(Priority priority) {
         return repository.findAll().stream()
                 .filter(t -> t.getPriority() == priority)
+                .toList();
+    }
+
+    /**
+     * Devuelve las tareas sin responsable de TODOS los proyectos, ordenadas por dueDate asc (nulls al final).
+     * Usa el predicado nombrado del ReportService y el comparador POR_FECHA.
+     */
+    public List<Task> sinResponsable() {
+        return repository.findAll().stream()
+                .filter(ReportService.SIN_ASIGNAR)
+                .sorted(TaskOrders.POR_FECHA)
                 .toList();
     }
 }

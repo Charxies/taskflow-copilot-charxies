@@ -23,8 +23,10 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.List;
 import java.util.Optional;
+import java.time.LocalDate;
 
 import static org.hamcrest.Matchers.matchesPattern;
+import static org.hamcrest.Matchers.nullValue;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.doThrow;
@@ -86,6 +88,19 @@ class TaskControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.length()").value(2))
                 .andExpect(jsonPath("$[0].title").value("Primera"));
+    }
+
+    @Test
+    void getOverdueTasks_retorna200YListaOrdenada() throws Exception {
+        when(taskService.vencidas()).thenReturn(List.of(
+                tareaCon(7L, "Corregir bug de fechas", TaskStatus.IN_PROGRESS, 1L),
+                tareaCon(9L, "Otra vencida", TaskStatus.IN_PROGRESS, 1L)
+        ));
+
+        mockMvc.perform(get("/tasks/overdue"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.length()").value(2))
+                .andExpect(jsonPath("$[0].title").value("Corregir bug de fechas"));
     }
 
     @Test
@@ -175,6 +190,23 @@ class TaskControllerTest {
         mockMvc.perform(delete("/tasks/999"))
                 .andExpect(status().isNotFound())
                 .andExpect(jsonPath("$.status").value(404));
+    }
+
+    @Test
+    void getUnassignedTasks_retorna200YJsonConAssigneeNull() throws Exception {
+        try {
+            Task t4 = new Task(4L, "Escribir tests MockMvc", "d", TaskStatus.IN_PROGRESS, Priority.MED, 1L, null, LocalDate.now().plusDays(7));
+            Task t6 = new Task(6L, "Publicar en la tienda", "d", TaskStatus.IN_PROGRESS, Priority.MED, 1L, null, LocalDate.now().plusDays(10));
+            when(taskService.sinResponsable()).thenReturn(List.of(t4, t6));
+        } catch (TaskValidationException e) {
+            throw new IllegalStateException("dato inválido", e);
+        }
+
+        mockMvc.perform(get("/tasks/unassigned"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.length()").value(2))
+                .andExpect(jsonPath("$[0].id").value(4))
+                .andExpect(jsonPath("$[0].assigneeId").value(nullValue()));
     }
 
     // ---- helpers de datos (reales, no mocks) ----
