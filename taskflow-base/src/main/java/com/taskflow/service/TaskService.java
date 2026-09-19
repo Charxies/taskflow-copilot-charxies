@@ -104,6 +104,17 @@ public class TaskService {
                 .toList();
     }
 
+    /**
+     * Devuelve las tareas vencidas de TODOS los proyectos, ordenadas por fecha ascendente.
+     * Usa la regla de vencimiento de la entidad (Task.estaVencida) y el comparador POR_FECHA.
+     */
+    public List<Task> vencidas() {
+        return repository.findAll().stream()
+                .filter(Task::estaVencida)
+                .sorted(TaskOrders.POR_FECHA)
+                .toList();
+    }
+
     /** Filtra las tareas por estado (?status=). '==' entre enums es seguro. */
     public List<Task> porEstado(TaskStatus status) {
         return repository.findAll().stream()
