@@ -1,0 +1,41 @@
+ specs/overdue.md                                   | 42 ++++++++++++++++++++++
+ taskflow-base/README.md                            |  2 ++
+ .../com/taskflow/controller/TaskController.java    | 11 ++++++
+ .../java/com/taskflow/service/TaskService.java     | 11 ++++++
+ .../com/taskflow/slice/TaskControllerTest.java     | 13 +++++++
+ .../java/com/taskflow/unit/TaskServiceTest.java    | 32 +++++++++++++++++
+ 6 files changed, 111 insertions(+)
+13	0	taskflow-base/src/test/java/com/taskflow/slice/TaskControllerTest.java
+32	0	taskflow-base/src/test/java/com/taskflow/unit/TaskServiceTest.java
+
++    /**
++     * GET /tasks/overdue — lista las tareas vencidas (todas las de todos los proyectos).
++     * Debe declararse antes que GET /tasks/{id} para evitar que "overdue" sea interpretado como id.
++     */
++    /**
++     * Devuelve las tareas vencidas de TODOS los proyectos, ordenadas por fecha ascendente.
++     * Usa la regla de vencimiento de la entidad (Task.estaVencida) y el comparador POR_FECHA.
++     */
++                // Debe venir solo las dos vencidas y en orden por fecha asc (la más antigua primero)
+
+MUTANTE: quitado .sorted(TaskOrders.POR_FECHA) de vencidas()
+
+[ERROR] Tests run: 8, Failures: 1, Errors: 0, Skipped: 0
+[INFO] BUILD FAILURE
+RESTAURADO: TaskService.java quedó exactamente como estaba.
+
+MUTANTE: quitado .sorted(TaskOrders.POR_FECHA) de vencidas()
+
+[ERROR] Tests run: 8, Failures: 1, Errors: 0, Skipped: 0
+[INFO] BUILD FAILURE
+RESTAURADO: TaskService.java quedó exactamente como estaba.
+
+
++     * Usa la regla de vencimiento de la entidad (Task.estaVencida) y el comparador POR_FECHA.
++                .filter(Task::estaVencida)
++                .sorted(TaskOrders.POR_FECHA)
+
+
+[INFO] Tests run: 69, Failures: 0, Errors: 0, Skipped: 0
+[INFO] BUILD SUCCESS
+
