@@ -32,4 +32,9 @@ public final class ProjectMapper {
                                                   long overdue) {
         return new ProjectSummaryResponse(p.getId(), p.getName(), totalTasks, byStatus, overdue);
     }
+
+    /** Proyecto + conteos ya calculados por el service -> DTO de salida de GET /reports/progress. */
+    public static com.taskflow.dto.ProjectProgressResponse aProgreso(Project proyecto, long totalTasks, long doneTasks, double percentDone) {
+        return new com.taskflow.dto.ProjectProgressResponse(proyecto.getId(), proyecto.getName(), totalTasks, doneTasks, percentDone);
+    }
 }
