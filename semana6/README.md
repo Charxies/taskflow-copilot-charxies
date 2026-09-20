@@ -4,7 +4,7 @@
 > `taskflow-copilot-charxies` y se llena **con datos de tu repo**: cada sección dice de dónde
 > sale cada valor. Borra las líneas que empiezan con `>` cuando termines.
 
-**Alumno:** `Carlos Urie Celestino Cautista` · **Usuario de GitHub:** `<tu-usuario>`
+**Alumno:** `Carlos Uriel Celestino Bautista` · **Usuario de GitHub:** `Charxies`
 
 ## 1. Qué construí
 
@@ -46,7 +46,7 @@
 |---|---|---|---|
 | 1 | `aveces utilizaba herramientas que no eran necesarias en bastantes prompts, ademas no corria los tests donde se debia` | `yo` | `el prompt de correcion solo era pasarle a ruta correcta` |
 
-**Lo que el agente hizo bien a la primera** (una o dos líneas): `<la mayoria de los archivos, solo toque el archivo de verificaciones para introducir la feat y eso es todo>`
+**Lo que el agente hizo bien a la primera** (una o dos líneas): `la mayoria de los archivos, solo toque el archivo de verificaciones para introducir la feat y eso es todo`
 
 ## 5. Comprobaciones REST
 
