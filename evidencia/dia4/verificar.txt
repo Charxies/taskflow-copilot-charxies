@@ -1,0 +1,11 @@
+Repositorio: C:\Users\USER3\IdeaProjects\academyMty\taskflow-copilot-charxies
+URL de la app: http://127.0.0.1:8080
+Empaquetando con Maven (mvn -q package -DskipTests), tarda unos segundos...
+[FALLA] mvn package no compilo (exit 1). Final de C:\Users\USER3\IdeaProjects\academyMty\taskflow-copilot-charxies\target\verificar-8080-build.log:
+[ERROR] The goal you specified requires a project to execute but there is no POM in this directory (C:\Users\USER3\IdeaProjects\academyMty\taskflow-copilot-charxies). Please verify you invoked Maven from the correct directory. -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MissingProjectException

@@ -104,9 +104,16 @@ public class TaskService {
                 .toList();
     }
 
+    /** Filtra las tareas por estado (?status=). '==' entre enums es seguro. */
+    public List<Task> porEstado(TaskStatus status) {
+        return repository.findAll().stream()
+                .filter(t -> t.getStatus() == status)
+                .toList();
+    }
+
     /**
-     * Devuelve las tareas vencidas de TODOS los proyectos, ordenadas por fecha ascendente.
-     * Usa la regla de vencimiento de la entidad (Task.estaVencida) y el comparador POR_FECHA.
+     * Tareas vencidas de todos los proyectos (GET /tasks/overdue, S6 Día 2). La regla es la del
+     * dominio, Task.estaVencida(); el orden, TaskOrders.POR_FECHA: la más vencida primero.
      */
     public List<Task> vencidas() {
         return repository.findAll().stream()
@@ -115,10 +122,15 @@ public class TaskService {
                 .toList();
     }
 
-    /** Filtra las tareas por estado (?status=). '==' entre enums es seguro. */
-    public List<Task> porEstado(TaskStatus status) {
+    /**
+     * Tareas sin responsable de todos los proyectos, en cualquier estado (GET /tasks/unassigned, S6
+     * Día 2). La regla es ReportService.SIN_ASIGNAR; el orden, TaskOrders.POR_FECHA: por fecha
+     * ascendente y las que no tienen fecha al final.
+     */
+    public List<Task> sinResponsable() {
         return repository.findAll().stream()
-                .filter(t -> t.getStatus() == status)
+                .filter(ReportService.SIN_ASIGNAR)
+                .sorted(TaskOrders.POR_FECHA)
                 .toList();
     }
 
@@ -131,17 +143,6 @@ public class TaskService {
     public List<Task> porPrioridad(Priority priority) {
         return repository.findAll().stream()
                 .filter(t -> t.getPriority() == priority)
-                .toList();
-    }
-
-    /**
-     * Devuelve las tareas sin responsable de TODOS los proyectos, ordenadas por dueDate asc (nulls al final).
-     * Usa el predicado nombrado del ReportService y el comparador POR_FECHA.
-     */
-    public List<Task> sinResponsable() {
-        return repository.findAll().stream()
-                .filter(ReportService.SIN_ASIGNAR)
-                .sorted(TaskOrders.POR_FECHA)
                 .toList();
     }
 }
