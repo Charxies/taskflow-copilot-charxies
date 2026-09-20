@@ -123,14 +123,14 @@ public class ProjectService {
     }
 
     /**
-     * Reporte de progreso por proyecto: todos los proyectos con conteos y porcentaje redondeado a 1 decimal.
+     * Progreso por proyecto: aparece TODOS los proyectos (aunque no tengan tareas). Ordena por
+     * projectId asc y calcula el porcentaje redondeado a un decimal.
      */
-    public java.util.List<com.taskflow.dto.ProjectProgressResponse> progresoPorProyecto() {
-        java.util.List<Project> proyectos = projectRepository.findAll();
-        return proyectos.stream()
+    public List<com.taskflow.dto.ProjectProgressResponse> progresoPorProyecto() {
+        return projectRepository.findAll().stream()
                 .sorted(java.util.Comparator.comparing(Project::getId))
                 .map(p -> {
-                    java.util.List<Task> tareas = taskRepository.findByProjectId(p.getId());
+                    List<Task> tareas = taskRepository.findByProjectId(p.getId());
                     long total = tareas.size();
                     long done = tareas.stream().filter(t -> t.getStatus() == TaskStatus.DONE).count();
                     double percent = total == 0 ? 0.0 : Math.round((done * 100.0 / total) * 10.0) / 10.0;

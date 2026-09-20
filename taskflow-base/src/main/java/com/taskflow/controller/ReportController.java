@@ -9,9 +9,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-/** Controller para reportes agregados. */
+/**
+ * ReportController — endpoints de reportes agregados.
+ */
 @RestController
-@Tag(name = "Reports", description = "Endpoints para reportes agregados sobre proyectos y tareas")
+@Tag(name = "Reports", description = "Reportes agregados: progreso por proyecto.")
 public class ReportController {
 
     private final ProjectService projectService;
@@ -20,9 +22,10 @@ public class ReportController {
         this.projectService = projectService;
     }
 
-    @Operation(summary = "Avance por proyecto", description = "Devuelve cuántas tareas tiene cada proyecto, cuántas están en DONE y el porcentaje completado.")
+    @Operation(summary = "Progreso por proyecto",
+            description = "Devuelve para cada proyecto cuántas tareas tiene, cuántas están DONE y el porcentaje completado (un decimal).")
     @GetMapping("/reports/progress")
-    public List<ProjectProgressResponse> progresoPorProyecto() {
+    public List<ProjectProgressResponse> getProgress() {
         return projectService.progresoPorProyecto();
     }
 }

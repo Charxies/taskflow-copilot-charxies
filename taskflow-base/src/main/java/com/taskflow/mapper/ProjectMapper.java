@@ -2,13 +2,14 @@ package com.taskflow.mapper;
 
 import com.taskflow.dto.ProjectResponse;
 import com.taskflow.dto.ProjectSummaryResponse;
+import com.taskflow.dto.ProjectProgressResponse;
 import com.taskflow.model.Project;
 import com.taskflow.model.TaskStatus;
 
 import java.util.Map;
 
 /**
- * ProjectMapper — puente DTO &lt;-&gt; dominio del lado Project. Estático, a mano, sin MapStruct.
+ * ProjectMapper — puente DTO <-> dominio del lado Project. Estático, a mano, sin MapStruct.
  *
  * HOY se SIMPLIFICÓ (lo prometía D3): la entidad ya guarda 'ownerId' directo (se aplanó el 'User
  * owner' en MP-4), así que aResponse ya no deriva el id desde un objeto (p.getOwner().id()) — lee
@@ -33,8 +34,9 @@ public final class ProjectMapper {
         return new ProjectSummaryResponse(p.getId(), p.getName(), totalTasks, byStatus, overdue);
     }
 
-    /** Proyecto + conteos ya calculados por el service -> DTO de salida de GET /reports/progress. */
-    public static com.taskflow.dto.ProjectProgressResponse aProgreso(Project proyecto, long totalTasks, long doneTasks, double percentDone) {
-        return new com.taskflow.dto.ProjectProgressResponse(proyecto.getId(), proyecto.getName(), totalTasks, doneTasks, percentDone);
+    /** Conteos ya calculados por el service -> DTO de salida de GET /reports/progress. */
+    public static ProjectProgressResponse aProgreso(Project proyecto, long totalTasks, long doneTasks,
+                                                    double percentDone) {
+        return new ProjectProgressResponse(proyecto.getId(), proyecto.getName(), totalTasks, doneTasks, percentDone);
     }
 }

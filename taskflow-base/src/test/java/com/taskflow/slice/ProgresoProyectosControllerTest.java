@@ -2,6 +2,7 @@ package com.taskflow.slice;
 
 import com.taskflow.controller.ReportController;
 import com.taskflow.dto.ProjectProgressResponse;
+import com.taskflow.model.Project;
 import com.taskflow.security.JwtAuthenticationFilter;
 import com.taskflow.service.ProjectService;
 import org.junit.jupiter.api.Test;
@@ -32,7 +33,7 @@ class ProgresoProyectosControllerTest {
     private JwtAuthenticationFilter jwtAuthenticationFilter;
 
     @Test
-    void getProgress_devuelve200ConCampos() throws Exception {
+    void getProgress_existente_devuelve200ConCadaCampo() throws Exception {
         when(projectService.progresoPorProyecto()).thenReturn(List.of(
                 new ProjectProgressResponse(1L, "Plataforma TaskFlow", 5, 1, 20.0),
                 new ProjectProgressResponse(2L, "App Móvil", 4, 1, 25.0)
@@ -41,7 +42,13 @@ class ProgresoProyectosControllerTest {
         mockMvc.perform(get("/reports/progress"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$[0].projectId").value(1))
+                .andExpect(jsonPath("$[0].projectName").value("Plataforma TaskFlow"))
+                .andExpect(jsonPath("$[0].totalTasks").value(5))
+                .andExpect(jsonPath("$[0].doneTasks").value(1))
                 .andExpect(jsonPath("$[0].percentDone").value(20.0))
+
+                .andExpect(jsonPath("$[1].projectId").value(2))
+                .andExpect(jsonPath("$[1].percentDone").value(25.0))
                 .andExpect(jsonPath("$[1].totalTasks").value(4));
     }
 }

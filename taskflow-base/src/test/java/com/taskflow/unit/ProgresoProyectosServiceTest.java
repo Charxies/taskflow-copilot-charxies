@@ -1,6 +1,7 @@
 package com.taskflow.unit;
 
 import com.taskflow.dto.ProjectProgressResponse;
+import com.taskflow.exception.TaskValidationException;
 import com.taskflow.model.Priority;
 import com.taskflow.model.Project;
 import com.taskflow.model.Task;
@@ -9,70 +10,71 @@ import com.taskflow.repository.ProjectRepository;
 import com.taskflow.repository.TaskRepository;
 import com.taskflow.repository.UserRepository;
 import com.taskflow.service.ProjectService;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
+import org.mockito.junit.jupiter.MockitoExtension;
 
-import java.time.LocalDate;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
 
+/** Unit de ProjectService.progresoPorProyecto: repositorios mockeados, proyectos y tareas reales. */
+@ExtendWith(MockitoExtension.class)
 class ProgresoProyectosServiceTest {
 
     @Mock
     private ProjectRepository projectRepository;
+
     @Mock
     private TaskRepository taskRepository;
+
     @Mock
     private UserRepository userRepository;
-    @InjectMocks
-    private ProjectService projectService;
 
-    @BeforeEach
-    void setup() {
-        MockitoAnnotations.openMocks(this);
+    @InjectMocks
+    private ProjectService service;
+
+    private final Project p1 = new Project(1L, "Plataforma TaskFlow", "d", 1L, null);
+    private final Project p2 = new Project(2L, "App Móvil", "d", 1L, null);
+    private final Project p3 = new Project(3L, "Migración Legacy", "d", 1L, null);
+
+    private Task tarea(Long id, TaskStatus status, Long projectId, Long assigneeId) throws TaskValidationException {
+        return new Task(id, "Tarea " + id, "d", status, Priority.MED, projectId, assigneeId, null);
     }
 
     @Test
-    void progresoPorProyecto_calculaCorrectamente() throws Exception {
-        Project p1 = new Project(1L, "Plataforma TaskFlow", "d", 1L, LocalDate.now());
-        Project p2 = new Project(2L, "App Móvil", "d", 1L, LocalDate.now());
-        Project p3 = new Project(3L, "Migración Legacy", "d", 1L, LocalDate.now());
+    void progreso_listaOrdenada_yPorcentajesBienCalculados() throws TaskValidationException {
+        // findAll devuelve en orden 3,1,2 (repo puede mezclar). El service debe ordenar 1,2,3.
+        when(projectRepository.findAll()).thenReturn(List.of(p3, p1, p2));
 
-        when(projectRepository.findAll()).thenReturn(List.of(p3, p1, p2)); // return 3,1,2
+        // Proyecto 1: 5 tareas, 1 DONE -> 20.0
+        when(taskRepository.findByProjectId(1L)).thenReturn(List.of(
+                tarea(1L, TaskStatus.DONE, 1L, 1L),
+                tarea(2L, TaskStatus.TODO, 1L, 1L),
+                tarea(3L, TaskStatus.TODO, 1L, 1L),
+                tarea(4L, TaskStatus.TODO, 1L, 1L),
+                tarea(5L, TaskStatus.TODO, 1L, 1L)
+        ));
 
-        List<Task> tareasP1 = List.of(
-                new Task(11L, "Task 1", null, TaskStatus.DONE, Priority.LOW, 1L, null, null),
-                new Task(12L, "Task 2", null, TaskStatus.TODO, Priority.LOW, 1L, null, null),
-                new Task(13L, "Task 3", null, TaskStatus.TODO, Priority.LOW, 1L, null, null),
-                new Task(14L, "Task 4", null, TaskStatus.TODO, Priority.LOW, 1L, null, null),
-                new Task(15L, "Task 5", null, TaskStatus.TODO, Priority.LOW, 1L, null, null)
-        );
-        when(taskRepository.findByProjectId(1L)).thenReturn(tareasP1);
+        // Proyecto 2: 3 tareas, 1 DONE -> 33.3 (redondeo a un decimal)
+        when(taskRepository.findByProjectId(2L)).thenReturn(List.of(
+                tarea(6L, TaskStatus.DONE, 2L, 1L),
+                tarea(7L, TaskStatus.TODO, 2L, 1L),
+                tarea(8L, TaskStatus.TODO, 2L, 1L)
+        ));
 
-        List<Task> tareasP2 = List.of(
-                new Task(21L, "Task A", null, TaskStatus.DONE, Priority.LOW, 2L, null, null),
-                new Task(22L, "Task B", null, TaskStatus.TODO, Priority.LOW, 2L, null, null),
-                new Task(23L, "Task C", null, TaskStatus.TODO, Priority.LOW, 2L, null, null)
-        );
-        when(taskRepository.findByProjectId(2L)).thenReturn(tareasP2);
-
+        // Proyecto 3: sin tareas
         when(taskRepository.findByProjectId(3L)).thenReturn(List.of());
 
-        List<ProjectProgressResponse> resultado = projectService.progresoPorProyecto();
+        List<ProjectProgressResponse> esperado = List.of(
+                new ProjectProgressResponse(1L, "Plataforma TaskFlow", 5, 1, 20.0),
+                new ProjectProgressResponse(2L, "App Móvil", 3, 1, 33.3),
+                new ProjectProgressResponse(3L, "Migración Legacy", 0, 0, 0.0)
+        );
 
-        assertEquals(3, resultado.size());
-        // orden por projectId 1,2,3
-        assertEquals(1L, resultado.get(0).projectId());
-        assertEquals(2L, resultado.get(1).projectId());
-        assertEquals(3L, resultado.get(2).projectId());
-
-        assertEquals(20.0, resultado.get(0).percentDone(), 0.0001);
-        assertEquals(33.3, resultado.get(1).percentDone(), 0.0001);
-        assertEquals(0.0, resultado.get(2).percentDone(), 0.0001);
+        assertEquals(esperado, service.progresoPorProyecto());
     }
 }
