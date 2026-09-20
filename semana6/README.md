@@ -17,7 +17,7 @@
 ## 2. El pull request
 
 - **URL del PR (mergeado):** `https://github.com/Charxies/taskflow-copilot-charxies/pull/5/`
-- **Commit del merge en `main`:** `fdc6dd6 Merge pull request #4 from Charxies/dia4-equipo`
+- **Commit del merge en `main`:** `f853dacc Merge pull request #5 from Charxies/feat/progresspr`
 - **Comentarios de Copilot code review:** `4`
 
 ## 3. Cómo lo hice
