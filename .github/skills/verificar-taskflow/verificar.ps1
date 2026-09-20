@@ -36,7 +36,7 @@ $ErrorActionPreference = 'Stop'
 
 # La raíz del repositorio está tres carpetas arriba de este script:
 # <raíz>/.github/skills/verificar-taskflow/verificar.ps1
-$raiz = (Resolve-Path (Join-Path $PSScriptRoot '..' '..' '..')).Path
+$raiz = (Resolve-Path (Join-Path $PSScriptRoot '..' '..' '..' 'taskflow-base')).Path
 # 127.0.0.1 y no localhost: en Windows localhost puede resolver primero a ::1 (IPv6) y la app
 # solo escucha en IPv4 127.0.0.1 (ver --server.address abajo).
 $base = "http://127.0.0.1:$Puerto"
