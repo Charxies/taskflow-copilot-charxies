@@ -1,0 +1,290 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ---------------------< com.taskflow:taskflow-api >----------------------
+[INFO] Building taskflow-api 3.0.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- jacoco:0.8.12:prepare-agent (default) @ taskflow-api ---
+[INFO] argLine set to -javaagent:C:\\Users\\USER3\\.m2\\repository\\org\\jacoco\\org.jacoco.agent\\0.8.12\\org.jacoco.agent-0.8.12-runtime.jar=destfile=C:\\Users\\USER3\\IdeaProjects\\academyMty\\taskflow-copilot-charxies\\taskflow-base\\target\\jacoco.exec,excludes=**/TaskflowApiApplication.class
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ taskflow-api ---
+[INFO] Copying 4 resources from src\main\resources to target\classes
+[INFO] Copying 13 resources from src\main\resources to target\classes
+[INFO] 
+[INFO] --- compiler:3.14.0:compile (default-compile) @ taskflow-api ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ taskflow-api ---
+[INFO] Copying 1 resource from src\test\resources to target\test-classes
+[INFO] 
+[INFO] --- compiler:3.14.0:testCompile (default-testCompile) @ taskflow-api ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- surefire:3.5.3:test (default-test) @ taskflow-api ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running com.taskflow.integration.AuthControllerTest
+22:16:46.109 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.taskflow.integration.AuthControllerTest]: AuthControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+22:16:46.410 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.taskflow.TaskflowApiApplication for test class com.taskflow.integration.AuthControllerTest
+2026-09-19T22:16:47.290-06:00  INFO 20680 --- [taskflow-api] [           main] c.t.integration.AuthControllerTest       : Starting AuthControllerTest using Java 21.0.12 with PID 20680 (started by USER3 in C:\Users\USER3\IdeaProjects\academyMty\taskflow-copilot-charxies\taskflow-base)
+2026-09-19T22:16:47.298-06:00  INFO 20680 --- [taskflow-api] [           main] c.t.integration.AuthControllerTest       : The following 1 profile is active: "test"
+2026-09-19T22:16:48.578-06:00  INFO 20680 --- [taskflow-api] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-09-19T22:16:48.636-06:00  INFO 20680 --- [taskflow-api] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 55 ms. Found 3 JPA repository interfaces.
+2026-09-19T22:16:49.270-06:00  INFO 20680 --- [taskflow-api] [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-09-19T22:16:49.336-06:00  INFO 20680 --- [taskflow-api] [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.18.Final
+2026-09-19T22:16:49.382-06:00  INFO 20680 --- [taskflow-api] [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-09-19T22:16:49.733-06:00  INFO 20680 --- [taskflow-api] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-09-19T22:16:49.782-06:00  INFO 20680 --- [taskflow-api] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-09-19T22:16:50.149-06:00  INFO 20680 --- [taskflow-api] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:taskflow-test-c9db37f1-8bc6-4a4f-9131-275ffa3e62b6 user=SA
+2026-09-19T22:16:50.149-06:00  INFO 20680 --- [taskflow-api] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-09-19T22:16:50.242-06:00  INFO 20680 --- [taskflow-api] [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 2.3.232
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-09-19T22:16:51.421-06:00  INFO 20680 --- [taskflow-api] [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-09-19T22:16:51.486-06:00  INFO 20680 --- [taskflow-api] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-09-19T22:16:51.887-06:00  INFO 20680 --- [taskflow-api] [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name jpaUserDetailsService
+2026-09-19T22:16:52.077-06:00  INFO 20680 --- [taskflow-api] [           main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2026-09-19T22:16:52.939-06:00  INFO 20680 --- [taskflow-api] [           main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2026-09-19T22:16:52.939-06:00  INFO 20680 --- [taskflow-api] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-09-19T22:16:52.939-06:00  INFO 20680 --- [taskflow-api] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
+2026-09-19T22:16:52.960-06:00  INFO 20680 --- [taskflow-api] [           main] c.t.integration.AuthControllerTest       : Started AuthControllerTest in 6.291 seconds (process running for 8.275)
+Mockito is currently self-attaching to enable the inline-mock-maker. This will no longer work in future releases of the JDK. Please add Mockito as an agent to your build as described in Mockito's documentation: https://javadoc.io/doc/org.mockito/mockito-core/latest/org.mockito/org/mockito/Mockito.html#0.3
+WARNING: A Java agent has been loaded dynamically (C:\Users\USER3\.m2\repository\net\bytebuddy\byte-buddy-agent\1.17.6\byte-buddy-agent-1.17.6.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 8.866 s -- in com.taskflow.integration.AuthControllerTest
+[INFO] Running com.taskflow.integration.FlujoCompletoE2ETest
+2026-09-19T22:16:54.670-06:00  INFO 20680 --- [taskflow-api] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.taskflow.integration.FlujoCompletoE2ETest]: FlujoCompletoE2ETest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-09-19T22:16:54.686-06:00  INFO 20680 --- [taskflow-api] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.taskflow.TaskflowApiApplication for test class com.taskflow.integration.FlujoCompletoE2ETest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.282 s -- in com.taskflow.integration.FlujoCompletoE2ETest
+[INFO] Running com.taskflow.integration.InfoControllerTest
+2026-09-19T22:16:54.956-06:00  INFO 20680 --- [taskflow-api] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.taskflow.integration.InfoControllerTest]: InfoControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-09-19T22:16:54.960-06:00  INFO 20680 --- [taskflow-api] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.taskflow.TaskflowApiApplication for test class com.taskflow.integration.InfoControllerTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.022 s -- in com.taskflow.integration.InfoControllerTest
+[INFO] Running com.taskflow.integration.SecurityRulesTest
+2026-09-19T22:16:54.976-06:00  INFO 20680 --- [taskflow-api] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.taskflow.integration.SecurityRulesTest]: SecurityRulesTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-09-19T22:16:54.988-06:00  INFO 20680 --- [taskflow-api] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.taskflow.TaskflowApiApplication for test class com.taskflow.integration.SecurityRulesTest
+[INFO] Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.425 s -- in com.taskflow.integration.SecurityRulesTest
+[INFO] Running com.taskflow.integration.TaskflowApiApplicationTests
+2026-09-19T22:16:55.403-06:00  INFO 20680 --- [taskflow-api] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.taskflow.integration.TaskflowApiApplicationTests]: TaskflowApiApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-09-19T22:16:55.406-06:00  INFO 20680 --- [taskflow-api] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.taskflow.TaskflowApiApplication for test class com.taskflow.integration.TaskflowApiApplicationTests
+2026-09-19T22:16:55.430-06:00  INFO 20680 --- [taskflow-api] [           main] c.t.i.TaskflowApiApplicationTests        : Starting TaskflowApiApplicationTests using Java 21.0.12 with PID 20680 (started by USER3 in C:\Users\USER3\IdeaProjects\academyMty\taskflow-copilot-charxies\taskflow-base)
+2026-09-19T22:16:55.430-06:00  INFO 20680 --- [taskflow-api] [           main] c.t.i.TaskflowApiApplicationTests        : The following 1 profile is active: "test"
+2026-09-19T22:16:55.585-06:00  INFO 20680 --- [taskflow-api] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-09-19T22:16:55.593-06:00  INFO 20680 --- [taskflow-api] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 15 ms. Found 3 JPA repository interfaces.
+2026-09-19T22:16:55.675-06:00  INFO 20680 --- [taskflow-api] [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-09-19T22:16:55.677-06:00  INFO 20680 --- [taskflow-api] [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-09-19T22:16:55.684-06:00  INFO 20680 --- [taskflow-api] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-09-19T22:16:55.684-06:00  INFO 20680 --- [taskflow-api] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2026-09-19T22:16:55.684-06:00  INFO 20680 --- [taskflow-api] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-2 - Added connection conn10: url=jdbc:h2:mem:taskflow-test-f443d173-a283-4e91-b50a-2d3d9ece2816 user=SA
+2026-09-19T22:16:55.684-06:00  INFO 20680 --- [taskflow-api] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2026-09-19T22:16:55.684-06:00  INFO 20680 --- [taskflow-api] [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-2)']
+	Database driver: undefined/unknown
+	Database version: 2.3.232
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-09-19T22:16:55.732-06:00  INFO 20680 --- [taskflow-api] [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-09-19T22:16:55.732-06:00  INFO 20680 --- [taskflow-api] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-09-19T22:16:55.851-06:00  INFO 20680 --- [taskflow-api] [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name jpaUserDetailsService
+2026-09-19T22:16:55.949-06:00  INFO 20680 --- [taskflow-api] [           main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2026-09-19T22:16:56.348-06:00  INFO 20680 --- [taskflow-api] [           main] c.t.i.TaskflowApiApplicationTests        : Started TaskflowApiApplicationTests in 0.939 seconds (process running for 11.658)
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.235 s -- in com.taskflow.integration.TaskflowApiApplicationTests
+[INFO] Running com.taskflow.slice.ProjectControllerSummaryTest
+2026-09-19T22:16:56.637-06:00  INFO 20680 --- [taskflow-api] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.taskflow.slice.ProjectControllerSummaryTest]: ProjectControllerSummaryTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-09-19T22:16:56.671-06:00  INFO 20680 --- [taskflow-api] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.taskflow.TaskflowApiApplication for test class com.taskflow.slice.ProjectControllerSummaryTest
+2026-09-19T22:16:56.697-06:00  INFO 20680 --- [taskflow-api] [           main] c.t.slice.ProjectControllerSummaryTest   : Starting ProjectControllerSummaryTest using Java 21.0.12 with PID 20680 (started by USER3 in C:\Users\USER3\IdeaProjects\academyMty\taskflow-copilot-charxies\taskflow-base)
+2026-09-19T22:16:56.697-06:00  INFO 20680 --- [taskflow-api] [           main] c.t.slice.ProjectControllerSummaryTest   : No active profile set, falling back to 1 default profile: "default"
+2026-09-19T22:16:57.385-06:00  INFO 20680 --- [taskflow-api] [           main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2026-09-19T22:16:57.683-06:00  WARN 20680 --- [taskflow-api] [           main] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 62acdca2-4db3-42fa-a0c8-5ac1da60c316
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2026-09-19T22:16:57.694-06:00  INFO 20680 --- [taskflow-api] [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2026-09-19T22:16:57.826-06:00  INFO 20680 --- [taskflow-api] [           main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2026-09-19T22:16:57.826-06:00  INFO 20680 --- [taskflow-api] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-09-19T22:16:57.826-06:00  INFO 20680 --- [taskflow-api] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
+2026-09-19T22:16:57.848-06:00  INFO 20680 --- [taskflow-api] [           main] c.t.slice.ProjectControllerSummaryTest   : Started ProjectControllerSummaryTest in 1.177 seconds (process running for 13.167)
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.395 s -- in com.taskflow.slice.ProjectControllerSummaryTest
+[INFO] Running com.taskflow.slice.ProjectControllerTest
+2026-09-19T22:16:58.045-06:00  INFO 20680 --- [taskflow-api] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.taskflow.slice.ProjectControllerTest]: ProjectControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-09-19T22:16:58.088-06:00  INFO 20680 --- [taskflow-api] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.taskflow.TaskflowApiApplication for test class com.taskflow.slice.ProjectControllerTest
+[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.207 s -- in com.taskflow.slice.ProjectControllerTest
+[INFO] Running com.taskflow.slice.TaskControllerTest
+2026-09-19T22:16:58.263-06:00  INFO 20680 --- [taskflow-api] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.taskflow.slice.TaskControllerTest]: TaskControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-09-19T22:16:58.295-06:00  INFO 20680 --- [taskflow-api] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.taskflow.TaskflowApiApplication for test class com.taskflow.slice.TaskControllerTest
+2026-09-19T22:16:58.366-06:00  INFO 20680 --- [taskflow-api] [           main] com.taskflow.slice.TaskControllerTest    : Starting TaskControllerTest using Java 21.0.12 with PID 20680 (started by USER3 in C:\Users\USER3\IdeaProjects\academyMty\taskflow-copilot-charxies\taskflow-base)
+2026-09-19T22:16:58.366-06:00  INFO 20680 --- [taskflow-api] [           main] com.taskflow.slice.TaskControllerTest    : No active profile set, falling back to 1 default profile: "default"
+2026-09-19T22:16:58.795-06:00  INFO 20680 --- [taskflow-api] [           main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2026-09-19T22:16:58.901-06:00  WARN 20680 --- [taskflow-api] [           main] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 82ab462e-0603-4524-961a-f06534c73ae7
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2026-09-19T22:16:58.901-06:00  INFO 20680 --- [taskflow-api] [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2026-09-19T22:16:58.929-06:00  INFO 20680 --- [taskflow-api] [           main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2026-09-19T22:16:58.929-06:00  INFO 20680 --- [taskflow-api] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-09-19T22:16:58.931-06:00  INFO 20680 --- [taskflow-api] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 2 ms
+2026-09-19T22:16:58.941-06:00  INFO 20680 --- [taskflow-api] [           main] com.taskflow.slice.TaskControllerTest    : Started TaskControllerTest in 0.637 seconds (process running for 14.253)
+[INFO] Tests run: 12, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.854 s -- in com.taskflow.slice.TaskControllerTest
+[INFO] Running com.taskflow.slice.TaskRepositoryTest
+2026-09-19T22:16:59.131-06:00  INFO 20680 --- [taskflow-api] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.taskflow.slice.TaskRepositoryTest]: TaskRepositoryTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-09-19T22:16:59.146-06:00  INFO 20680 --- [taskflow-api] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.taskflow.TaskflowApiApplication for test class com.taskflow.slice.TaskRepositoryTest
+2026-09-19T22:16:59.189-06:00  INFO 20680 --- [taskflow-api] [           main] com.taskflow.slice.TaskRepositoryTest    : Starting TaskRepositoryTest using Java 21.0.12 with PID 20680 (started by USER3 in C:\Users\USER3\IdeaProjects\academyMty\taskflow-copilot-charxies\taskflow-base)
+2026-09-19T22:16:59.189-06:00  INFO 20680 --- [taskflow-api] [           main] com.taskflow.slice.TaskRepositoryTest    : No active profile set, falling back to 1 default profile: "default"
+2026-09-19T22:16:59.307-06:00  INFO 20680 --- [taskflow-api] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-09-19T22:16:59.319-06:00  INFO 20680 --- [taskflow-api] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 18 ms. Found 3 JPA repository interfaces.
+2026-09-19T22:16:59.351-06:00  INFO 20680 --- [taskflow-api] [           main] beddedDataSourceBeanFactoryPostProcessor : Replacing 'dataSource' DataSource bean with embedded version
+2026-09-19T22:16:59.383-06:00  INFO 20680 --- [taskflow-api] [           main] o.s.j.d.e.EmbeddedDatabaseFactory        : Starting embedded database: url='jdbc:h2:mem:0c9948e8-2a27-4e87-b49c-bf5b9b49385f;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=false', username='sa'
+2026-09-19T22:16:59.428-06:00  INFO 20680 --- [taskflow-api] [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-09-19T22:16:59.428-06:00  INFO 20680 --- [taskflow-api] [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-09-19T22:16:59.444-06:00  INFO 20680 --- [taskflow-api] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-09-19T22:16:59.444-06:00  INFO 20680 --- [taskflow-api] [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseFactory$EmbeddedDataSourceProxy@22e88d66']
+	Database driver: undefined/unknown
+	Database version: 2.3.232
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-09-19T22:16:59.510-06:00  INFO 20680 --- [taskflow-api] [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+Hibernate: create table projects (id bigint generated by default as identity, created_at date, description varchar(255), name varchar(255) not null, owner_id bigint, primary key (id))
+Hibernate: create table tasks (id bigint generated by default as identity, assignee_id bigint, description varchar(255), due_date date, priority enum ('HIGH','LOW','MED') not null, project_id bigint not null, status enum ('DONE','IN_PROGRESS','TODO') not null, title varchar(120) not null, primary key (id))
+Hibernate: create table users (id bigint generated by default as identity, email varchar(255), password_hash varchar(255), role enum ('ADMIN','USER'), username varchar(255), primary key (id))
+Hibernate: alter table if exists users drop constraint if exists UKr43af9ap4edm43mmtq01oddj6
+Hibernate: alter table if exists users add constraint UKr43af9ap4edm43mmtq01oddj6 unique (username)
+Hibernate: alter table if exists tasks add constraint FKsfhn82y57i3k9uxww1s007acc foreign key (project_id) references projects
+2026-09-19T22:16:59.557-06:00  INFO 20680 --- [taskflow-api] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-09-19T22:16:59.656-06:00  INFO 20680 --- [taskflow-api] [           main] com.taskflow.slice.TaskRepositoryTest    : Started TaskRepositoryTest in 0.51 seconds (process running for 14.967)
+Hibernate: insert into projects (created_at,description,name,owner_id,id) values (?,?,?,?,default)
+Hibernate: select p1_0.id,p1_0.created_at,p1_0.description,p1_0.name,p1_0.owner_id from projects p1_0 where p1_0.id=?
+Hibernate: insert into tasks (assignee_id,description,due_date,priority,project_id,status,title,id) values (?,?,?,?,?,?,?,default)
+Hibernate: select t1_0.id,t1_0.assignee_id,t1_0.description,t1_0.due_date,t1_0.priority,t1_0.project_id,t1_0.status,t1_0.title from tasks t1_0 where t1_0.id=?
+Hibernate: insert into tasks (assignee_id,description,due_date,priority,project_id,status,title,id) values (?,?,?,?,?,?,?,default)
+Hibernate: select t1_0.id,t1_0.assignee_id,t1_0.description,t1_0.due_date,t1_0.priority,t1_0.project_id,t1_0.status,t1_0.title from tasks t1_0 where t1_0.id=?
+Hibernate: insert into tasks (assignee_id,description,due_date,priority,project_id,status,title,id) values (?,?,?,?,?,?,?,default)
+Hibernate: select t1_0.id,t1_0.assignee_id,t1_0.description,t1_0.due_date,t1_0.priority,t1_0.project_id,t1_0.status,t1_0.title from tasks t1_0 where t1_0.id=?
+Hibernate: select count(t1_0.id) from tasks t1_0 where t1_0.status=?
+Hibernate: select t1_0.id,t1_0.assignee_id,t1_0.description,t1_0.due_date,t1_0.priority,t1_0.project_id,t1_0.status,t1_0.title from tasks t1_0 where upper(t1_0.title) like upper(?) escape '\'
+Hibernate: insert into projects (created_at,description,name,owner_id,id) values (?,?,?,?,default)
+Hibernate: select p1_0.id,p1_0.created_at,p1_0.description,p1_0.name,p1_0.owner_id from projects p1_0 where p1_0.id=?
+Hibernate: insert into tasks (assignee_id,description,due_date,priority,project_id,status,title,id) values (?,?,?,?,?,?,?,default)
+Hibernate: select t1_0.id,t1_0.assignee_id,t1_0.description,t1_0.due_date,t1_0.priority,t1_0.project_id,t1_0.status,t1_0.title from tasks t1_0 where t1_0.id=?
+Hibernate: insert into tasks (assignee_id,description,due_date,priority,project_id,status,title,id) values (?,?,?,?,?,?,?,default)
+Hibernate: select t1_0.id,t1_0.assignee_id,t1_0.description,t1_0.due_date,t1_0.priority,t1_0.project_id,t1_0.status,t1_0.title from tasks t1_0 where t1_0.id=?
+Hibernate: insert into tasks (assignee_id,description,due_date,priority,project_id,status,title,id) values (?,?,?,?,?,?,?,default)
+Hibernate: select t1_0.id,t1_0.assignee_id,t1_0.description,t1_0.due_date,t1_0.priority,t1_0.project_id,t1_0.status,t1_0.title from tasks t1_0 where t1_0.id=?
+Hibernate: select t1_0.id,t1_0.assignee_id,t1_0.description,t1_0.due_date,t1_0.priority,t1_0.project_id,t1_0.status,t1_0.title from tasks t1_0 where t1_0.status=?
+Hibernate: insert into projects (created_at,description,name,owner_id,id) values (?,?,?,?,default)
+Hibernate: select p1_0.id,p1_0.created_at,p1_0.description,p1_0.name,p1_0.owner_id from projects p1_0 where p1_0.id=?
+Hibernate: insert into projects (created_at,description,name,owner_id,id) values (?,?,?,?,default)
+Hibernate: select p1_0.id,p1_0.created_at,p1_0.description,p1_0.name,p1_0.owner_id from projects p1_0 where p1_0.id=?
+Hibernate: insert into tasks (assignee_id,description,due_date,priority,project_id,status,title,id) values (?,?,?,?,?,?,?,default)
+Hibernate: select t1_0.id,t1_0.assignee_id,t1_0.description,t1_0.due_date,t1_0.priority,t1_0.project_id,t1_0.status,t1_0.title from tasks t1_0 where t1_0.id=?
+Hibernate: insert into tasks (assignee_id,description,due_date,priority,project_id,status,title,id) values (?,?,?,?,?,?,?,default)
+Hibernate: select t1_0.id,t1_0.assignee_id,t1_0.description,t1_0.due_date,t1_0.priority,t1_0.project_id,t1_0.status,t1_0.title from tasks t1_0 where t1_0.id=?
+Hibernate: insert into tasks (assignee_id,description,due_date,priority,project_id,status,title,id) values (?,?,?,?,?,?,?,default)
+Hibernate: select t1_0.id,t1_0.assignee_id,t1_0.description,t1_0.due_date,t1_0.priority,t1_0.project_id,t1_0.status,t1_0.title from tasks t1_0 where t1_0.id=?
+Hibernate: select t1_0.id,t1_0.assignee_id,t1_0.description,t1_0.due_date,t1_0.priority,t1_0.project_id,t1_0.status,t1_0.title from tasks t1_0 where t1_0.project_id=?
+Hibernate: insert into projects (created_at,description,name,owner_id,id) values (?,?,?,?,default)
+Hibernate: select p1_0.id,p1_0.created_at,p1_0.description,p1_0.name,p1_0.owner_id from projects p1_0 where p1_0.id=?
+Hibernate: insert into tasks (assignee_id,description,due_date,priority,project_id,status,title,id) values (?,?,?,?,?,?,?,default)
+Hibernate: insert into projects (created_at,description,name,owner_id,id) values (?,?,?,?,default)
+Hibernate: select p1_0.id,p1_0.created_at,p1_0.description,p1_0.name,p1_0.owner_id from projects p1_0 where p1_0.id=?
+Hibernate: insert into tasks (assignee_id,description,due_date,priority,project_id,status,title,id) values (?,?,?,?,?,?,?,default)
+Hibernate: select t1_0.id,t1_0.assignee_id,t1_0.description,t1_0.due_date,t1_0.priority,t1_0.project_id,t1_0.status,t1_0.title from tasks t1_0 where t1_0.id=?
+Hibernate: insert into tasks (assignee_id,description,due_date,priority,project_id,status,title,id) values (?,?,?,?,?,?,?,default)
+Hibernate: select t1_0.id,t1_0.assignee_id,t1_0.description,t1_0.due_date,t1_0.priority,t1_0.project_id,t1_0.status,t1_0.title from tasks t1_0 where t1_0.id=?
+Hibernate: insert into tasks (assignee_id,description,due_date,priority,project_id,status,title,id) values (?,?,?,?,?,?,?,default)
+Hibernate: select t1_0.id,t1_0.assignee_id,t1_0.description,t1_0.due_date,t1_0.priority,t1_0.project_id,t1_0.status,t1_0.title from tasks t1_0 where t1_0.id=?
+Hibernate: select t1_0.id,t1_0.assignee_id,t1_0.description,t1_0.due_date,t1_0.priority,t1_0.project_id,t1_0.status,t1_0.title from tasks t1_0 where t1_0.assignee_id=? and t1_0.status=?
+Hibernate: insert into projects (created_at,description,name,owner_id,id) values (?,?,?,?,default)
+Hibernate: select p1_0.id,p1_0.created_at,p1_0.description,p1_0.name,p1_0.owner_id from projects p1_0 where p1_0.id=?
+Hibernate: insert into tasks (assignee_id,description,due_date,priority,project_id,status,title,id) values (?,?,?,?,?,?,?,default)
+Hibernate: select t1_0.id,t1_0.assignee_id,t1_0.description,t1_0.due_date,t1_0.priority,t1_0.project_id,t1_0.status,t1_0.title from tasks t1_0 where t1_0.id=?
+Hibernate: select t1_0.id,t1_0.assignee_id,t1_0.description,t1_0.due_date,t1_0.priority,t1_0.project_id,t1_0.status,t1_0.title from tasks t1_0 where t1_0.status=?
+Hibernate: insert into projects (created_at,description,name,owner_id,id) values (?,?,?,?,default)
+Hibernate: select p1_0.id,p1_0.created_at,p1_0.description,p1_0.name,p1_0.owner_id from projects p1_0 where p1_0.id=?
+Hibernate: insert into tasks (assignee_id,description,due_date,priority,project_id,status,title,id) values (?,?,?,?,?,?,?,default)
+Hibernate: select t1_0.id,t1_0.assignee_id,t1_0.description,t1_0.due_date,t1_0.priority,t1_0.project_id,t1_0.status,t1_0.title from tasks t1_0 where t1_0.id=?
+Hibernate: select t1_0.id,t1_0.assignee_id,t1_0.description,t1_0.due_date,t1_0.priority,t1_0.project_id,t1_0.status,t1_0.title from tasks t1_0 where t1_0.status=?
+Hibernate: insert into projects (created_at,description,name,owner_id,id) values (?,?,?,?,default)
+Hibernate: select p1_0.id,p1_0.created_at,p1_0.description,p1_0.name,p1_0.owner_id from projects p1_0 where p1_0.id=?
+Hibernate: insert into tasks (assignee_id,description,due_date,priority,project_id,status,title,id) values (?,?,?,?,?,?,?,default)
+Hibernate: select t1_0.id,t1_0.assignee_id,t1_0.description,t1_0.due_date,t1_0.priority,t1_0.project_id,t1_0.status,t1_0.title from tasks t1_0 where t1_0.id=?
+Hibernate: select t1_0.id,t1_0.assignee_id,t1_0.description,t1_0.due_date,t1_0.priority,t1_0.project_id,t1_0.status,t1_0.title from tasks t1_0 where t1_0.status=?
+Hibernate: select t1_0.id,t1_0.assignee_id,t1_0.description,t1_0.due_date,t1_0.priority,t1_0.project_id,t1_0.status,t1_0.title from tasks t1_0 where t1_0.assignee_id=? and t1_0.status=?
+Hibernate: select t1_0.id,t1_0.assignee_id,t1_0.description,t1_0.due_date,t1_0.priority,t1_0.project_id,t1_0.status,t1_0.title from tasks t1_0 where t1_0.id=?
+Hibernate: insert into projects (created_at,description,name,owner_id,id) values (?,?,?,?,default)
+Hibernate: select p1_0.id,p1_0.created_at,p1_0.description,p1_0.name,p1_0.owner_id from projects p1_0 where p1_0.id=?
+Hibernate: insert into tasks (assignee_id,description,due_date,priority,project_id,status,title,id) values (?,?,?,?,?,?,?,default)
+Hibernate: select t1_0.id,t1_0.assignee_id,t1_0.description,t1_0.due_date,t1_0.priority,t1_0.project_id,t1_0.status,t1_0.title from tasks t1_0 where t1_0.id=?
+Hibernate: select t1_0.id,t1_0.assignee_id,t1_0.description,t1_0.due_date,t1_0.priority,t1_0.project_id,t1_0.status,t1_0.title from tasks t1_0 where t1_0.id=?
+[INFO] Tests run: 11, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.788 s -- in com.taskflow.slice.TaskRepositoryTest
+[INFO] Running com.taskflow.unit.ProjectServiceSummaryTest
+[ERROR] Tests run: 2, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.554 s <<< FAILURE! -- in com.taskflow.unit.ProjectServiceSummaryTest
+[ERROR] com.taskflow.unit.ProjectServiceSummaryTest.resumen_conTareas_enTresEstadosYUnaVencida_devuelveConteos -- Time elapsed: 0.520 s <<< ERROR!
+com.taskflow.exception.TaskValidationException: El t�tulo debe tener entre 3 y 120 caracteres; recib� 2: "T1".
+	at com.taskflow.model.Task.<init>(Task.java:117)
+	at com.taskflow.unit.ProjectServiceSummaryTest.resumen_conTareas_enTresEstadosYUnaVencida_devuelveConteos(ProjectServiceSummaryTest.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+
+[INFO] Running com.taskflow.unit.ReportServiceTest
+[INFO] Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.049 s -- in com.taskflow.unit.ReportServiceTest
+[INFO] Running com.taskflow.unit.TaskServiceTest
+[INFO] Running com.taskflow.unit.TaskServiceTest$SinResponsable
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.007 s -- in com.taskflow.unit.TaskServiceTest$SinResponsable
+[INFO] Running com.taskflow.unit.TaskServiceTest$Vencidas
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.007 s -- in com.taskflow.unit.TaskServiceTest$Vencidas
+[INFO] Running com.taskflow.unit.TaskServiceTest$Eliminar
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.028 s -- in com.taskflow.unit.TaskServiceTest$Eliminar
+[INFO] Running com.taskflow.unit.TaskServiceTest$CambiarStatus
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.018 s -- in com.taskflow.unit.TaskServiceTest$CambiarStatus
+[INFO] Running com.taskflow.unit.TaskServiceTest$Crear
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.014 s -- in com.taskflow.unit.TaskServiceTest$Crear
+[INFO] Tests run: 0, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.080 s -- in com.taskflow.unit.TaskServiceTest
+[INFO] Running com.taskflow.unit.TaskValidationTest
+[INFO] Tests run: 10, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.110 s -- in com.taskflow.unit.TaskValidationTest
+[INFO] 
+[INFO] Results:
+[INFO] 
+[ERROR] Errors: 
+[ERROR]   ProjectServiceSummaryTest.resumen_conTareas_enTresEstadosYUnaVencida_devuelveConteos:43 � TaskValidation El t�tulo debe tener entre 3 y 120 caracteres; recib� 2: "T1".
+[INFO] 
+[ERROR] Tests run: 77, Failures: 0, Errors: 1, Skipped: 0
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  18.230 s
+[INFO] Finished at: 2026-09-19T22:17:01-06:00
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-surefire-plugin:3.5.3:test (default-test) on project taskflow-api: 
+[ERROR] 
+[ERROR] See C:\Users\USER3\IdeaProjects\academyMty\taskflow-copilot-charxies\taskflow-base\target\surefire-reports for the individual test results.
+[ERROR] See dump files (if any exist) [date].dump, [date]-jvmRun[N].dump and [date].dumpstream.
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
